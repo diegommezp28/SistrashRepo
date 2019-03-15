@@ -2,7 +2,7 @@ package uniandes.isis2304.parranderos.negocio;
 
 import java.util.Date;
 
-public interface VOReservaHabitacion {
+public interface VOReserva {
 
 	
 	public Long getId();
@@ -14,4 +14,10 @@ public interface VOReservaHabitacion {
 	public Integer getNumeroPersonas();
 	
 	public String getPlanPago();	
+	
+	public Double getTotalPago();
+	
+	public Integer getCheckIn();
+	
+	public Integer getCheckOut();
 }

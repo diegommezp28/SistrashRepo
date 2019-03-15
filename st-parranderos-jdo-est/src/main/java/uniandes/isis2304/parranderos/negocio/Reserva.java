@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * @author Diego Gómez
  */
-public class ReservaHabitacion implements VOReservaHabitacion {
+public class Reserva implements VOReserva {
 
 	public Long id;
 	
@@ -15,15 +15,43 @@ public class ReservaHabitacion implements VOReservaHabitacion {
 	
 	private Date fechaSalida;
 	
-	public ReservaHabitacion(Long id, Date fechaLlegada, Date fechaSalida, Integer numeroPersonas, String planPago) {
+	private Integer numeroPersonas;
+	
+	private String planPago;
+	
+	public Double totalPago;
+	
+	public Integer checkIn;
+	
+	public Integer checkOut;
+	
+	public Reserva(Long id, Date fechaLlegada, Date fechaSalida, Integer numeroPersonas, String planPago,
+			Double totalPago, Integer checkIn, Integer checkOut) {
 		super();
 		this.id = id;
 		this.fechaLlegada = fechaLlegada;
 		this.fechaSalida = fechaSalida;
 		this.numeroPersonas = numeroPersonas;
 		this.planPago = planPago;
+		this.totalPago = totalPago;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
 	}
+
 	
+	
+	public void setTotalPago(Double totalPago) {
+		this.totalPago = totalPago;
+	}
+
+	public void setCheckIn(Integer checkIn) {
+		this.checkIn = checkIn;
+	}
+
+	public void setCheckOut(Integer checkOut) {
+		this.checkOut = checkOut;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -44,9 +72,6 @@ public class ReservaHabitacion implements VOReservaHabitacion {
 		this.planPago = planPago;
 	}
 
-	private Integer numeroPersonas;
-	
-	private String planPago;
 	
 	@Override
 	public Long getId() {
@@ -76,6 +101,24 @@ public class ReservaHabitacion implements VOReservaHabitacion {
 	public String getPlanPago() {
 		// TODO Auto-generated method stub
 		return planPago;
+	}
+
+	@Override
+	public Double getTotalPago() {
+		// TODO Auto-generated method stub
+		return totalPago;
+	}
+
+	@Override
+	public Integer getCheckIn() {
+		// TODO Auto-generated method stub
+		return checkIn;
+	}
+
+	@Override
+	public Integer getCheckOut() {
+		// TODO Auto-generated method stub
+		return checkOut;
 	}
 
 }
