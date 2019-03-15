@@ -10,8 +10,8 @@
             <!-- ENABLE THESE FOR Oracle -->
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod"/>
             <property name="javax.jdo.option.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="javax.jdo.option.ConnectionUserName" value="gbravo"/>
-            <property name="javax.jdo.option.ConnectionPassword" value="isis2304"/>
+            <property name="javax.jdo.option.ConnectionUserName" value="ISIS2304A161910"/>
+            <property name="javax.jdo.option.ConnectionPassword" value="hxzlUvUXHk"/>
             <property name="javax.jdo.option.Mapping" value="oracle"/>
 
             <property name="datanucleus.schema.autoCreateAll" value="false"/>
@@ -26,8 +26,8 @@
             <!-- ENABLE THESE FOR Oracle -->
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:NN"/>
             <property name="javax.jdo.option.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="javax.jdo.option.ConnectionUserName" value="Unknown"/>
-            <property name="javax.jdo.option.ConnectionPassword" value="NN"/>
+            <property name="javax.jdo.option.ConnectionUserName" value="ISIS2304A161910"/>
+            <property name="javax.jdo.option.ConnectionPassword" value="hxzlUvUXHk"/>
             <property name="javax.jdo.option.Mapping" value="oracle"/>
 
             <property name="datanucleus.schema.autoCreateAll" value="false"/>
@@ -42,8 +42,8 @@
             <!-- ENABLE THESE FOR Oracle -->
             <property name="javax.jdo.option.ConnectionURL" value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod"/>
             <property name="javax.jdo.option.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="javax.jdo.option.ConnectionUserName" value="NN"/>
-            <property name="javax.jdo.option.ConnectionPassword" value="NN"/>
+            <property name="javax.jdo.option.ConnectionUserName" value="ISIS2304A161910"/>
+            <property name="javax.jdo.option.ConnectionPassword" value="hxzlUvUXHk"/>
             <property name="javax.jdo.option.Mapping" value="oracle"/>
 
             <property name="datanucleus.schema.autoCreateAll" value="false"/>
