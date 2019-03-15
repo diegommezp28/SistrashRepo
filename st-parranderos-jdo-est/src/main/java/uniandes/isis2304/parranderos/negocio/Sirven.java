@@ -22,7 +22,6 @@ package uniandes.isis2304.parranderos.negocio;
  * Debe existir un bar con el identificador dado
  * Debe existir una bebida con el identificador dado 
  * Adicionalmente contiene el horario (DIURNO, NOCTURNO, TODOS) en el cual el bar sirve la bebida
- * 
  * @author Germán Bravo
  */
 public class Sirven implements VOSirven
