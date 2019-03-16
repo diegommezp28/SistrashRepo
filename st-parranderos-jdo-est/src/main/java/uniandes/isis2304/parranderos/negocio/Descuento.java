@@ -9,24 +9,25 @@ public class Descuento implements VODescuento{
 	private String nombrePlan;
 	
 	private String nombreProducto;
+	
+	private String nombreServicio;
 
 	public Descuento() {
 		super();
 		porcentaje = 0;
-		
 		maximoProductos = 0;
-		
 		nombrePlan = "";
-		
 		nombreProducto = "";
+		nombreServicio = "";
 	}
 
-	public Descuento(Integer porcentaje, Integer maximoProductos, String nombrePlan, String nombreProducto) {
+	public Descuento(Integer porcentaje, Integer maximoProductos, String nombrePlan, String nombreProducto, String nombreServicio) {
 		super();
 		this.porcentaje = porcentaje;
 		this.maximoProductos = maximoProductos;
 		this.nombrePlan = nombrePlan;
 		this.nombreProducto = nombreProducto;
+		this.nombreServicio = nombreServicio;
 	}
 
 	public Integer getPorcentaje() {
@@ -61,10 +62,18 @@ public class Descuento implements VODescuento{
 		this.nombreProducto = nombreProducto;
 	}
 
+	public String getNombreServicio() {
+		return nombreServicio;
+	}
+
+	public void setNombreServicio(String nombreServicio) {
+		this.nombreServicio = nombreServicio;
+	}
+
 	@Override
 	public String toString() {
 		return "Descuento [porcentaje=" + porcentaje + ", maximoProductos=" + maximoProductos + ", nombrePlan="
-				+ nombrePlan + ", nombreProducto=" + nombreProducto + "]";
+				+ nombrePlan + ", nombreProducto=" + nombreProducto + ", nombreServicio=" + nombreServicio + "]";
 	}
 
 
