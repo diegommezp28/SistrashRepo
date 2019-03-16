@@ -18,6 +18,14 @@ public class Acompaniante implements VOAcompaniante {
 		this.acompaniante = acompaniante;
 	}
 
+	public Acompaniante() {
+		super();
+		this.documento = 0;
+		this.tipoDocumento = " ";
+		this.nombre = " ";
+		this.acompaniante = false;
+	}
+
 	public Integer getDocumento() {
 		return documento;
 	}

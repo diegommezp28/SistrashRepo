@@ -3,23 +3,38 @@ package uniandes.isis2304.parranderos.negocio;
 import java.util.Date;
 
 public class ReservaDeServicio implements VOReservaDeServicio {
-	
-	private Date Reserva;
-	
+
+	private Date reserva;
+
 	private Integer tiempoReserva;
 
-	public ReservaDeServicio(Date reserva, Integer tiempoReserva) {
+	private String nombreServicio;
+
+	private Long idReserva;
+
+
+	public ReservaDeServicio() {
 		super();
-		Reserva = reserva;
+		reserva = new Date();
+		tiempoReserva = 0;
+		nombreServicio = "";
+		idReserva = 0L;
+	}
+
+	public ReservaDeServicio(Date reserva, Integer tiempoReserva, String nombreServicio, Long idReserva) {
+		super();
+		reserva = reserva;
 		this.tiempoReserva = tiempoReserva;
+		this.nombreServicio = nombreServicio;
+		this.idReserva = idReserva;
 	}
 
 	public Date getReserva() {
-		return Reserva;
+		return reserva;
 	}
 
 	public void setReserva(Date reserva) {
-		Reserva = reserva;
+		reserva = reserva;
 	}
 
 	public Integer getTiempoReserva() {
@@ -30,9 +45,26 @@ public class ReservaDeServicio implements VOReservaDeServicio {
 		this.tiempoReserva = tiempoReserva;
 	}
 
+	public String getNombreServicio() {
+		return nombreServicio;
+	}
+
+	public void setNombreServicio(String nombreServicio) {
+		this.nombreServicio = nombreServicio;
+	}
+
+	public Long getIdReserva() {
+		return idReserva;
+	}
+
+	public void setIdReserva(Long idReserva) {
+		this.idReserva = idReserva;
+	}
+
 	@Override
 	public String toString() {
-		return "ReservaDeServicio [Reserva=" + Reserva + ", tiempoReserva=" + tiempoReserva + "]";
+		return "ReservaDeServicio [reserva=" + reserva + ", tiempoReserva=" + tiempoReserva + ", nombreServicio="
+				+ nombreServicio + ", idReserva=" + idReserva + "]";
 	}
 
 }

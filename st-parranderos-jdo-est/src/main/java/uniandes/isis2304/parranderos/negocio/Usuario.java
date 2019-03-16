@@ -1,8 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
 
-//TODO terminar resto de atributos de las tablas relacionales
-//TODO constructor vacío
 /**
  * @author Diego Gómez
  */
@@ -17,11 +15,29 @@ public class Usuario implements VOUsuario {
 	
 	private String correo;
 	
-	public Usuario(String tipoDocumento, Integer numDocumento, String nombre, String correo) {
+	public String nombreRolUsuario;
+	
+	public String nombreHotel;
+	
+	public Usuario(String tipoDocumento, Integer numDocumento, String nombre, String correo, String nombreRolUsuario,
+			String nombreHotel) {
+		super();
 		this.tipoDocumento = tipoDocumento;
 		this.numDocumento = numDocumento;
 		this.nombre = nombre;
 		this.correo = correo;
+		this.nombreRolUsuario = nombreRolUsuario;
+		this.nombreHotel = nombreHotel;
+	}
+
+	public Usuario() {
+		super();
+		this.tipoDocumento = " ";
+		this.numDocumento = 0;
+		this.nombre = " ";
+		this.correo = " ";
+		this.nombreRolUsuario = "";
+		this.nombreHotel = " ";
 	}
 	
 	public void setTipoDocumento(String tipoDocumento) {
@@ -40,30 +56,43 @@ public class Usuario implements VOUsuario {
 		this.correo = correo;
 	}
 
-	@Override
+	public String getNombreRolUsuario() {
+		return nombreRolUsuario;
+	}
+
+	public void setNombreRolUsuario(String nombreRolUsuario) {
+		this.nombreRolUsuario = nombreRolUsuario;
+	}
+
+	public String getNombreHotel() {
+		return nombreHotel;
+	}
+
+	public void setNombreHotel(String nombreHotel) {
+		this.nombreHotel = nombreHotel;
+	}
+
 	public String getTipoDocumento() {
 		return tipoDocumento;
 	}
 
-	@Override
 	public Integer getNumDocumento() {
 		return numDocumento;
 	}
 
-	@Override
 	public String getNombre() {
 		return nombre;
 	}
 
-	@Override
-	public String getCorreo() { 
+	public String getCorreo() {
 		return correo;
 	}
 
 	@Override
 	public String toString() {
 		return "Usuario [tipoDocumento=" + tipoDocumento + ", numDocumento=" + numDocumento + ", nombre=" + nombre
-				+ ", correo=" + correo + "]";
+				+ ", correo=" + correo + ", nombreRolUsuario=" + nombreRolUsuario + ", nombreHotel=" + nombreHotel
+				+ "]";
 	}
 
 }

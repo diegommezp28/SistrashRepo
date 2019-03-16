@@ -22,6 +22,12 @@ public class Hotel implements VOHotel {
 		this.numeroHabitaciones = numeroHabitaciones;
 	}
 	
+	public Hotel() {
+		super();
+		this.nombre = " ";
+		this.ciudad = " ";
+		this.numeroHabitaciones = 0;
+	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

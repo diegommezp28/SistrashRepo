@@ -2,8 +2,6 @@
 
 public interface VOPlanesDisponibles {
 	
-	public Long getId();
-	
 	public String getNombre();
 	
 	public String getDescripcion();
@@ -11,6 +9,8 @@ public interface VOPlanesDisponibles {
 	public Integer getDiasTotales();
 	
 	public Double getCostoTotal();
+	
+	public String getNombreHotel();
 	
 
 }

@@ -11,6 +11,13 @@ public class RolUsuario implements VORolUsuario {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
+	
+	public RolUsuario() {
+		super();
+		this.nombre = " ";
+		this.descripcion = " ";
+	}
+
 
 	public String getNombre() {
 		return nombre;

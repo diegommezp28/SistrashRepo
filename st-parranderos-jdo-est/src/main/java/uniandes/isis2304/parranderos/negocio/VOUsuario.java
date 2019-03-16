@@ -10,6 +10,10 @@ public interface VOUsuario {
 	
 	public String getCorreo();
 	
+	public String getNombreRolUsuario();
+	
+	public String getNombreHotel();
+	
 	@Override
 	public String toString();
 	

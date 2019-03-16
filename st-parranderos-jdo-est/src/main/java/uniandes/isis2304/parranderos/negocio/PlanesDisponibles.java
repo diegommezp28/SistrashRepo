@@ -2,8 +2,6 @@ package uniandes.isis2304.parranderos.negocio;
 
 public class PlanesDisponibles implements VOPlanesDisponibles {
 	
-	private Long id;
-	
 	private String nombre;
 	
 	private String descripcion;
@@ -11,23 +9,18 @@ public class PlanesDisponibles implements VOPlanesDisponibles {
 	private Double costoTotal;
 	
 	private Integer diasTotales;
+	
+	private String nombreHotel;
 
-	public PlanesDisponibles(Long id, String nombre, String descripcion, Double costoTotal, Integer diasTotales) {
+	public PlanesDisponibles( ) {
 		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.costoTotal = costoTotal;
-		this.diasTotales = diasTotales;
+		this.nombre = " ";
+		this.descripcion = " ";
+		this.costoTotal = 0.0;
+		this.diasTotales = 0;
+		nombreHotel = " ";
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -61,10 +54,20 @@ public class PlanesDisponibles implements VOPlanesDisponibles {
 		this.diasTotales = diasTotales;
 	}
 
+	public String getNombreHotel() {
+		return nombreHotel;
+	}
+
+
+	public void setNombreHotel(String nombreHotel) {
+		this.nombreHotel = nombreHotel;
+	}
+
+
 	@Override
 	public String toString() {
-		return "PlanesDisponibles [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", costoTotal="
-				+ costoTotal + ", diasTotales=" + diasTotales + "]";
+		return "PlanesDisponibles [nombre=" + nombre + ", descripcion=" + descripcion + ", costoTotal=" + costoTotal
+				+ ", diasTotales=" + diasTotales + ", nombreHotel=" + nombreHotel + "]";
 	}
 	
 	

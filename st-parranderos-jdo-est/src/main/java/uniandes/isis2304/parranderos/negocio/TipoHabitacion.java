@@ -11,6 +11,12 @@ public class TipoHabitacion implements VOTipoHabitacion{
 		this.nombre = nombre;
 		this.costoNoche = costoNoche;
 	}
+	
+	public TipoHabitacion() {
+		super();
+		this.nombre = " ";
+		this.costoNoche = 0.0;
+	}
 
 	public String getNombre() {
 		return nombre;

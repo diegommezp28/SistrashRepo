@@ -8,5 +8,8 @@ public interface VOReservaDeServicio {
 	
 	public Integer getTiempoReserva();
 	
+	public Long getIdReserva();
+	
+	public String getNombreServicio();
 
 }
