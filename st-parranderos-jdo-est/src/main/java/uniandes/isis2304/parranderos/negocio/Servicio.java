@@ -1,28 +1,30 @@
 package uniandes.isis2304.parranderos.negocio;
 
 /**
- *TODO atributos del modelo relacional y constructor vacío
  * @author Diego Gómez
  *
  */
 public class Servicio implements VOServicio{
 
-	private Long id;
 	
 	public String nombre;
 	
 	private Integer capacidad;
 	
-	public Servicio(Long id, String nombre, Integer capacidad, String descripcion) {
+	private String descripcion;
+	
+	public Servicio( String nombre, Integer capacidad, String descripcion) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.capacidad = capacidad;
 		this.descripcion = descripcion;
 	}
 	
-	public void setId(Long id) {
-		this.id = id;
+	public Servicio() {
+		super();
+		nombre ="";
+		capacidad = 0; 
+		descripcion = "";
 	}
 
 	public void setNombre(String nombre) {
@@ -37,36 +39,27 @@ public class Servicio implements VOServicio{
 		this.descripcion = descripcion;
 	}
 
-	private String descripcion;
-	
-	@Override
-	public Long getId() {
-		// TODO Auto-generated method stub
-		return id;
-	}
-
-	@Override
 	public String getNombre() {
-		// TODO Auto-generated method stub
 		return nombre;
 	}
 
-	@Override
+
+
 	public Integer getCapacidad() {
-		// TODO Auto-generated method stub
 		return capacidad;
 	}
 
-	@Override
+
+
 	public String getDescripcion() {
-		// TODO Auto-generated method stub
 		return descripcion;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Servicio [id=" + id + ", nombre=" + nombre + ", capacidad=" + capacidad + ", descripcion=" + descripcion
-				+ "]";
+		return "Servicio [nombre=" + nombre + ", capacidad=" + capacidad + ", descripcion=" + descripcion + "]";
 	}
 
 }

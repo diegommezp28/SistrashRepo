@@ -4,6 +4,9 @@ public interface VODescuento {
 	
 	public Integer  getPorcentaje();
 	
-	public Integer getMaximoProducto();
-
+	public Integer getMaximoProductos();
+	
+	public String getNombrePlan();
+	
+	public String getNombreProducto();
 }

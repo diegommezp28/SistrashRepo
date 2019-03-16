@@ -2,26 +2,34 @@ package uniandes.isis2304.parranderos.negocio;
 
 public class TieneUtensilio implements VOTieneUtensilio {
 	
-	private Integer cantidad;
+	private Long idReserva;
+	
+	private Long idUtensilio;
 	
 	private Boolean buenEstado;
 	
 	private Double costo;
 
-	public TieneUtensilio(Integer cantidad, Boolean buenEstado, Double costo) {
+
+
+	public TieneUtensilio(Long idReserva, Long idUtensilio, Boolean buenEstado, Double costo) {
 		super();
-		this.cantidad = cantidad;
+		this.idReserva = idReserva;
+		this.idUtensilio = idUtensilio;
 		this.buenEstado = buenEstado;
 		this.costo = costo;
 	}
 
-	public Integer getCantidad() {
-		return cantidad;
+
+	public TieneUtensilio() {
+		super();
+		buenEstado = true;
+		costo = 0.0;
+		idReserva = 0L;
+		idUtensilio = 0L;
+		
 	}
 
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
-	}
 
 	public Boolean getBuenEstado() {
 		return buenEstado;
@@ -39,9 +47,33 @@ public class TieneUtensilio implements VOTieneUtensilio {
 		this.costo = costo;
 	}
 
+
+	public Long getIdReserva() {
+		return idReserva;
+	}
+
+
+	public void setIdReserva(Long idReserva) {
+		this.idReserva = idReserva;
+	}
+
+
+	public Long getIdUtensilio() {
+		return idUtensilio;
+	}
+
+
+	public void setIdUtensilio(Long idUtensilio) {
+		this.idUtensilio = idUtensilio;
+	}
+
+
 	@Override
 	public String toString() {
-		return "TieneUtensilio [cantidad=" + cantidad + ", buenEstado=" + buenEstado + ", costo=" + costo + "]";
+		return "TieneUtensilio [idReserva=" + idReserva + ", idUtensilio=" + idUtensilio + ", buenEstado=" + buenEstado
+				+ ", costo=" + costo + "]";
 	}
+
+
 
 }

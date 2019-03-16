@@ -2,7 +2,9 @@ package uniandes.isis2304.parranderos.negocio;
 
 public interface VOTieneUtensilio {
 
-	public Integer getCantidad();
+	public Long getIdReserva();
+	
+	public Long getIdUtensilio();
 	
 	public Boolean getBuenEstado();
 	

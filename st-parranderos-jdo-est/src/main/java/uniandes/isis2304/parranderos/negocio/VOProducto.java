@@ -5,4 +5,6 @@ public interface VOProducto {
 	public String getNombre();
 	
 	public Double getCosto();
+	
+	public String getNombreServicio();
 }

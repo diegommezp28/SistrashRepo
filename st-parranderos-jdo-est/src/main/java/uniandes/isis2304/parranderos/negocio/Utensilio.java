@@ -2,14 +2,28 @@ package uniandes.isis2304.parranderos.negocio;
 
 public class Utensilio implements VOUtensilio{
 	
+	private Long id;
+	
 	private String nombre;
 	
 	private Boolean buenEstado;
 	
 	private Boolean prestado;
 
-	public Utensilio(String nombre, Boolean buenEstado, Boolean prestado) {
+
+
+	public Utensilio() {
 		super();
+		id = 0L;
+		nombre = "";
+		buenEstado = true;
+		prestado = false;
+		
+	}
+
+	public Utensilio(Long id, String nombre, Boolean buenEstado, Boolean prestado) {
+		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.buenEstado = buenEstado;
 		this.prestado = prestado;
@@ -38,10 +52,21 @@ public class Utensilio implements VOUtensilio{
 	public void setPrestado(Boolean prestado) {
 		this.prestado = prestado;
 	}
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	@Override
 	public String toString() {
-		return "Utensilio [nombre=" + nombre + ", buenEstado=" + buenEstado + ", prestado=" + prestado + "]";
+		return "Utensilio [id=" + id + ", nombre=" + nombre + ", buenEstado=" + buenEstado + ", prestado=" + prestado
+				+ "]";
 	}
+
 
 }

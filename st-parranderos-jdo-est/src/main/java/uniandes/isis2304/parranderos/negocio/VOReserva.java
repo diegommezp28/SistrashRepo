@@ -20,4 +20,8 @@ public interface VOReserva {
 	public Integer getCheckIn();
 	
 	public Integer getCheckOut();
+	
+	public Integer getDocumentoCliente();
+	
+	public String getCodigoHabitacion();
 }

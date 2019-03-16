@@ -2,8 +2,6 @@ package uniandes.isis2304.parranderos.negocio;
 
 import java.util.Date;
 
-
-//TODO otros atributos de las tablas y constructor vacío
 /**
  * @author Diego Gómez
  */
@@ -25,8 +23,26 @@ public class Reserva implements VOReserva {
 	
 	public Integer checkOut;
 	
+	public Integer documentoCliente;
+	
+	public String codigoHabitacion;
+
+	public Reserva() {
+		super();
+		this.id = 0L;
+		this.fechaLlegada = new Date();
+		this.fechaSalida = new Date();
+		this.numeroPersonas = 0;
+		this.planPago = "";
+		this.totalPago = 0.0;
+		this.checkIn = 0;
+		this.checkOut = 0;
+		this.documentoCliente = 0;
+		this.codigoHabitacion = "";
+	}
+
 	public Reserva(Long id, Date fechaLlegada, Date fechaSalida, Integer numeroPersonas, String planPago,
-			Double totalPago, Integer checkIn, Integer checkOut) {
+			Double totalPago, Integer checkIn, Integer checkOut, Integer documentoCliente, String codigoHabitacion) {
 		super();
 		this.id = id;
 		this.fechaLlegada = fechaLlegada;
@@ -36,10 +52,10 @@ public class Reserva implements VOReserva {
 		this.totalPago = totalPago;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
+		this.documentoCliente = documentoCliente;
+		this.codigoHabitacion = codigoHabitacion;
 	}
 
-	
-	
 	public void setTotalPago(Double totalPago) {
 		this.totalPago = totalPago;
 	}
@@ -72,62 +88,60 @@ public class Reserva implements VOReserva {
 		this.planPago = planPago;
 	}
 
-	
-	@Override
+	public Integer getDocumentoCliente() {
+		return documentoCliente;
+	}
+
+	public void setDocumentoCliente(Integer documentoCliente) {
+		this.documentoCliente = documentoCliente;
+	}
+
+	public String getCodigoHabitacion() {
+		return codigoHabitacion;
+	}
+
+	public void setCodigoHabitacion(String codigoHabitacion) {
+		this.codigoHabitacion = codigoHabitacion;
+	}
+
 	public Long getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 
-	@Override
 	public Date getFechaLlegada() {
-		// TODO Auto-generated method stub
 		return fechaLlegada;
 	}
 
-	@Override
 	public Date getFechaSalida() {
-		// TODO Auto-generated method stub
 		return fechaSalida;
 	}
 
-	@Override
 	public Integer getNumeroPersonas() {
-		// TODO Auto-generated method stub
 		return numeroPersonas;
 	}
 
-	@Override
 	public String getPlanPago() {
-		// TODO Auto-generated method stub
 		return planPago;
 	}
 
-	@Override
 	public Double getTotalPago() {
-		// TODO Auto-generated method stub
 		return totalPago;
 	}
 
-	@Override
 	public Integer getCheckIn() {
-		// TODO Auto-generated method stub
 		return checkIn;
 	}
 
-	@Override
 	public Integer getCheckOut() {
-		// TODO Auto-generated method stub
 		return checkOut;
 	}
-
-
 
 	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", fechaLlegada=" + fechaLlegada + ", fechaSalida=" + fechaSalida
 				+ ", numeroPersonas=" + numeroPersonas + ", planPago=" + planPago + ", totalPago=" + totalPago
-				+ ", checkIn=" + checkIn + ", checkOut=" + checkOut + "]";
+				+ ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", documentoCliente=" + documentoCliente
+				+ ", codigoHabitacion=" + codigoHabitacion + "]";
 	}
 
 }
