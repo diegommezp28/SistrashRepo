@@ -51,6 +51,11 @@ public class Hotel implements VOHotel {
 		// TODO Auto-generated method stub
 		return numeroHabitaciones;
 	}
+
+	@Override
+	public String toString() {
+		return "Hotel [nombre=" + nombre + ", ciudad=" + ciudad + ", numeroHabitaciones=" + numeroHabitaciones + "]";
+	}
 	
 	
 

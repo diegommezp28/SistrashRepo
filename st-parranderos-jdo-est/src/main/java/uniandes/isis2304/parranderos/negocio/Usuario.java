@@ -60,4 +60,10 @@ public class Usuario implements VOUsuario {
 		return correo;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [tipoDocumento=" + tipoDocumento + ", numDocumento=" + numDocumento + ", nombre=" + nombre
+				+ ", correo=" + correo + "]";
+	}
+
 }

@@ -63,4 +63,10 @@ public class Servicio implements VOServicio{
 		return descripcion;
 	}
 
+	@Override
+	public String toString() {
+		return "Servicio [id=" + id + ", nombre=" + nombre + ", capacidad=" + capacidad + ", descripcion=" + descripcion
+				+ "]";
+	}
+
 }

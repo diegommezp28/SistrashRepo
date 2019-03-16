@@ -121,4 +121,13 @@ public class Reserva implements VOReserva {
 		return checkOut;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Reserva [id=" + id + ", fechaLlegada=" + fechaLlegada + ", fechaSalida=" + fechaSalida
+				+ ", numeroPersonas=" + numeroPersonas + ", planPago=" + planPago + ", totalPago=" + totalPago
+				+ ", checkIn=" + checkIn + ", checkOut=" + checkOut + "]";
+	}
+
 }
