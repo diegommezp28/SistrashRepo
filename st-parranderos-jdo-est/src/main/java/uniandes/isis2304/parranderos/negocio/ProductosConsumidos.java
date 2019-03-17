@@ -5,13 +5,22 @@ public class ProductosConsumidos implements VOProductosConsumidos{
 	private Long idConsumo;
 	
 	private String nombreProducto;
+	
+	private String nombreServicio;
 
-	public ProductosConsumidos(Long idConsumo, String nombreProducto) {
+	public ProductosConsumidos(Long idConsumo, String nombreProducto, String nombreServicio) {
 		super();
 		this.idConsumo = idConsumo;
 		this.nombreProducto = nombreProducto;
+		this.nombreServicio = nombreServicio;
 	}
 
+	public ProductosConsumidos() {
+		super();
+		this.idConsumo = 0L;
+		this.nombreProducto = "";
+		this.nombreServicio = "";
+	}
 	public Long getIdConsumo() {
 		return idConsumo;
 	}
@@ -28,9 +37,18 @@ public class ProductosConsumidos implements VOProductosConsumidos{
 		this.nombreProducto = nombreProducto;
 	}
 
+	public String getNombreServicio() {
+		return nombreServicio;
+	}
+
+	public void setNombreServicio(String nombreServicio) {
+		this.nombreServicio = nombreServicio;
+	}
+
 	@Override
 	public String toString() {
-		return "ProductosConsumidos [idConsumo=" + idConsumo + ", nombreProducto=" + nombreProducto + "]";
+		return "ProductosConsumidos [idConsumo=" + idConsumo + ", nombreProducto=" + nombreProducto
+				+ ", nombreServicio=" + nombreServicio + "]";
 	}
 	
 	

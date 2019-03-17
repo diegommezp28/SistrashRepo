@@ -5,4 +5,6 @@ public interface VOProductosConsumidos {
 	public Long getIdConsumo();
 	
 	public String getNombreProducto();
+	
+	public String getNombreServicio();
 }
