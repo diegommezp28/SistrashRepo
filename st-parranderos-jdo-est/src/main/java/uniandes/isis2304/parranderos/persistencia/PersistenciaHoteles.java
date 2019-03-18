@@ -4,11 +4,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import uniandes.isis2304.parranderos.negocio.Bebida;
+import uniandes.isis2304.parranderos.negocio.Hotel;
+import uniandes.isis2304.parranderos.negocio.Reserva;
+import uniandes.isis2304.parranderos.negocio.TipoHabitacion;
+import uniandes.isis2304.parranderos.negocio.Usuario;
 
 public class PersistenciaHoteles {
 
@@ -71,6 +79,11 @@ public class PersistenciaHoteles {
 	private SQLUtensilio sqlUtensilio;
 
 	private SQLHotel sqlHotel;
+	
+	/*
+	 * Equivalente a SQLUtil en Parranderos
+	 */
+	private SQLHoteles sqlHoteles;
 
 	private PersistenciaHoteles() {
 		pmf = JDOHelper.getPersistenceManagerFactory("Hoteles");		
@@ -78,6 +91,7 @@ public class PersistenciaHoteles {
 
 		tablas = new LinkedList<String> ();
 
+		tablas.add("HOTELES_SEQUENCE");
 		tablas.add ("HOTEL");
 		tablas.add ("DESCUENTO");
 		tablas.add ("PRODUCTO");
@@ -161,6 +175,10 @@ public class PersistenciaHoteles {
 		sqlUtensilio = new SQLUtensilio(this);
 
 		sqlHotel = new SQLHotel(this);
+		
+		sqlHoteles = new SQLHoteles(this);
+		
+		
 	}
 
 	/**
@@ -189,6 +207,126 @@ public class PersistenciaHoteles {
 		
 		return resp;
 	}
+	
+	public static PersistenciaHoteles getInstance(JsonObject tableConfig) {
+		if(instance==null) {
+			instance = new PersistenciaHoteles(tableConfig);
+		}
+		return instance;
+	}
+	
+	public static PersistenciaHoteles getInstance() {
+		if(instance==null) {
+			instance = new PersistenciaHoteles();
+		}
+		return instance;
+	}
 
+	public Boolean existeCedulaUsuario(Integer documento)  {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			return sqlUsuario.existeCedula(pm, documento);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return true;
+		}
+	}
+	
+	public Boolean existeCedulaGerente(Integer documento)  {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			return sqlUsuario.existeCedulaGerente(pm, documento);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return true;
+		}
+	}
+	
+	public Boolean existeCedulaEmpleado(Integer documento)  {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			return sqlUsuario.existeCedulaEmpleado(pm, documento);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return true;
+		}
+	}
+	
+	public Boolean existeCedulaRecepcionista(Integer documento)  {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			return sqlUsuario.existeCedulaRecepcionista(pm, documento);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return true;
+		}
+	}
+	
+	public Boolean existeCedulaAdminDatos(Integer documento)  {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		try {
+			return sqlUsuario.existeCedulaAdminDatos(pm, documento);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return true;
+		}
+	}
+	
+	public Long agregarUsuario(Usuario usuario) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		return sqlUsuario.agregarUsuario(pm, usuario);
+	}
+	
+	public Boolean disponibilidadHabitaciones(java.sql.Date llegada, java.sql.Date salida, String nombreHotel, String tipoHabitacion) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Query q = pm.newQuery(SQL, 
+				"SELECT HABITACION.codigo"
+				+ " FROM HABITACION LEFT JOIN RESERVA "
+				+ "ON HABITACION.codigo = RESERVA.codigo_habitacion"
+				+ " WHERE RESERVA.fecha_llegada NOT BETWEEN '"+ llegada +"' AND '"+salida+"'");
+		List lista = q.executeList();
+		System.out.println(lista);
+		if(!lista.isEmpty()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void registrarReserva(Reserva reserva) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		sqlReserva.registrarReservaHabitacion(pm, reserva);
+	}
+	
+	public List<Hotel> listarHoteles(){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		return sqlHotel.listarHoteles(pm);
+	}
+	
+	public List<TipoHabitacion> listarTiposHabitaciones(){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		return sqlTipoHabitacion.listarTiposHabitaciones(pm);
+	}
+	
+	public List listarReservas() {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		return sqlReserva.listarReservas(pm);
+	}
+	
+	public List reservasPorId(Long id) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		return sqlReserva.reservaPorId(pm, id);
+	}
+	
+	public Long eliminarReservaPorId(Long id) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		return sqlReserva.eliminarPorId(pm, id);
+	}
+	
+	public Long eliminarReservaPorDocumento(int documento) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		return sqlReserva.eliminarPorDocumento(pm, documento);
+	}
 
 }

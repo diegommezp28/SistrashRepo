@@ -1,5 +1,12 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.util.List;
+
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+
+import uniandes.isis2304.parranderos.negocio.Reserva;
+
 public class SQLReserva {
 	/**
 	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
@@ -17,5 +24,38 @@ public class SQLReserva {
 
 	public SQLReserva(PersistenciaHoteles pp) {
 		this.pp = pp;
+	}
+	
+	public void registrarReservaHabitacion(PersistenceManager pm, Reserva reserva) {
+        Query q = pm.newQuery(SQL, "INSERT INTO RESERVA" + "(id, fecha_Llegada, fecha_Salida, numero_Personas, nombre_Planpago, total_pago, check_In, check_Out, documento_cliente, codigo_habitacion) values (?, ?, ?, ?,?,?,?,?,?,?)");
+        q.setParameters(reserva.getId().intValue(), new java.sql.Date(reserva.getFechaLlegada().getTime()),
+        		new java.sql.Date(reserva.getFechaSalida().getTime()), reserva.getNumeroPersonas(), reserva.getPlanPago(),
+        		reserva.getTotalPago(), reserva.getCheckIn(), reserva.getCheckOut(), reserva.getDocumentoCliente(),
+        		reserva.getCodigoHabitacion());
+         q.executeUnique();       
+	}
+	
+	public List listarReservas(PersistenceManager pm) {
+		Query q = pm.newQuery("SELECT * FROM RESERVA");
+		return q.executeResultList();
+	}
+	
+	public List reservaPorId(PersistenceManager pm, Long id) {
+		Query q = pm.newQuery("SELECT * FROM RESERVA"
+				+ "WHERE id = "+id.intValue());
+		return q.executeList();
+		
+	}
+	
+	public Long eliminarPorDocumento(PersistenceManager pm, int documento) {
+		Query q = pm.newQuery("DELETE * FROM RESERVA"
+				+ "WHERE documento_cliente = "+documento);
+		return (Long) q.executeUnique();
+	}
+	
+	public Long eliminarPorId(PersistenceManager pm, Long id) {
+		Query q = pm.newQuery("DELETE * FROM RESERVA"
+				+ "WHERE id = "+id.intValue());
+		return (Long) q.executeUnique();
 	}
 }

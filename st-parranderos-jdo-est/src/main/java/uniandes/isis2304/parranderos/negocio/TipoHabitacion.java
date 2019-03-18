@@ -5,11 +5,15 @@ public class TipoHabitacion implements VOTipoHabitacion{
 	private String nombre;
 	
 	private Double costoNoche;
+	
+	private String descripcion;
 
-	public TipoHabitacion(String nombre, Double costoNoche) {
+
+	public TipoHabitacion(String nombre, Double costoNoche, String descripcion) {
 		super();
 		this.nombre = nombre;
 		this.costoNoche = costoNoche;
+		this.descripcion = descripcion;
 	}
 	
 	public TipoHabitacion() {
@@ -32,11 +36,19 @@ public class TipoHabitacion implements VOTipoHabitacion{
 
 	public void setCostoNoche(Double costoNoche) {
 		this.costoNoche = costoNoche;
+	}	
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Override
 	public String toString() {
-		return "TipoHabitacion [nombre=" + nombre + ", costoNoche=" + costoNoche + "]";
+		return "TipoHabitacion [nombre=" + nombre + ", costoNoche=" + costoNoche + ", descripcion=" + descripcion + "]";
 	}
 	
 }
