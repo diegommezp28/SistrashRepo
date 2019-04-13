@@ -1,0 +1,29 @@
+{
+	"title": "Nombres de las tablas de Hoteles",
+	"unidadPersistencia": "Hoteles",
+	"tablas":
+	[
+	    "HOTELES_SEQUENCE",
+		"HOTEL",
+		"DESCUENTO",
+		"PRODUCTO",
+		"CONSUMO",
+		"TIENE_UTENSILIO",
+		"UTENSILIO",
+		"RESERVA",
+		"SERVICIO",
+		"RESERVA_DE_SERVICIO",
+		"TIPO_SERVICIO",
+		"PLANES_DISPONIBLES",
+		"ACOMPANIANTE",
+		"TIPO_HABITACION",
+		"HABITACION",
+		"USUARIO",
+		"ROL_USUARIO",
+		"HABITACION_HOTEL",
+		"ACOMPANIANTE_RESERVA",
+		"PRODUCTOS_CONSUMIDOS",
+		"SERVICIO_TIPO_SERVICIO",
+		"TIPO_HABITACION_HOTEL"
+	]
+}
