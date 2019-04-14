@@ -6,9 +6,7 @@ public interface VOFactura {
 	
 	public Double getTotalAPagar();
 	
-	public String getTipoDocumentoUsuario();
-	
-	public Integer getDocumentoUsuario();
+	public Long getIdUsuario();
 	
 	public Long getIdReserva();
 }

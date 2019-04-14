@@ -4,18 +4,16 @@ public class Factura implements VOFactura {
 	
 	private Long idReserva;
 	
-	private Integer documentoUsuario;
-	
-	private String tipoDocumentoUsuario;
+	private Long idUsuario;
 	
 	private Double totalAPagar;
 	
 	private Long id;
 
-	public Factura(Long idReserva, Integer documentoUsuario, String tipoDocumentoUsuario, Double totalAPagar, Long id) {
+
+	public Factura(Long idReserva, Long idUsuario, Double totalAPagar, Long id) {
 		this.idReserva = idReserva;
-		this.documentoUsuario = documentoUsuario;
-		this.tipoDocumentoUsuario = tipoDocumentoUsuario;
+		this.idUsuario = idUsuario;
 		this.totalAPagar = totalAPagar;
 		this.id = id;
 	}
@@ -28,20 +26,12 @@ public class Factura implements VOFactura {
 		this.idReserva = idReserva;
 	}
 
-	public Integer getDocumentoUsuario() {
-		return documentoUsuario;
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setDocumentoUsuario(Integer documentoUsuario) {
-		this.documentoUsuario = documentoUsuario;
-	}
-
-	public String getTipoDocumentoUsuario() {
-		return tipoDocumentoUsuario;
-	}
-
-	public void setTipoDocumentoUsuario(String tipoDocumentoUsuario) {
-		this.tipoDocumentoUsuario = tipoDocumentoUsuario;
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public Double getTotalAPagar() {
@@ -62,8 +52,8 @@ public class Factura implements VOFactura {
 
 	@Override
 	public String toString() {
-		return "Factura [idReserva=" + idReserva + ", documentoUsuario=" + documentoUsuario + ", tipoDocumentoUsuario="
-				+ tipoDocumentoUsuario + ", totalAPagar=" + totalAPagar + ", id=" + id + "]";
+		return "Factura [idReserva=" + idReserva + ", idUsuario=" + idUsuario + ", totalAPagar=" + totalAPagar + ", id="
+				+ id + "]";
 	}
 	
 	

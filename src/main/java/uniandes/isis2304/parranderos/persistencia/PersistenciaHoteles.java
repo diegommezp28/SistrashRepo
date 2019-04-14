@@ -77,6 +77,8 @@ public class PersistenciaHoteles {
 	private SQLFactura sqlFactura;
 	
 	private SQLDescuentoServicio sqlDescuentoServicio;
+	
+	private SQLMantenimiento sqlMantenimiento;
 
 	private PersistenciaHoteles() {
 		pmf = JDOHelper.getPersistenceManagerFactory("Hoteles");		
@@ -104,6 +106,7 @@ public class PersistenciaHoteles {
 		tablas.add ("PRODUCTOS_CONSUMIDOS");
 		tablas.add("FACTURA");
 		tablas.add("DESCUENTO_SERVICIO");
+		tablas.add("MANTENIMIENTO");
 
 	}
 	
@@ -164,6 +167,8 @@ public class PersistenciaHoteles {
 		sqlFactura = new SQLFactura(this);
 		
 		sqlDescuentoServicio = new SQLDescuentoServicio(this);
+		
+		sqlMantenimiento = new SQLMantenimiento(this);
 		
 		
 	}
