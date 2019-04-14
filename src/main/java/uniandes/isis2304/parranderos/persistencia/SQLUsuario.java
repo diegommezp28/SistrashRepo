@@ -103,7 +103,7 @@ public class SQLUsuario {
 	{
 		try {
         Query q = pm.newQuery(SQL, "INSERT INTO USUARIO" + "(documento, tipo_documento, nombre	, correo, nombre_rol_usuario, nombre_hotel) values (?, ?, ?, ?,?,?)");
-        q.setParameters(usuario.getNumDocumento(), usuario.getTipoDocumento(), usuario.getNombre(),usuario.getCorreo() ,usuario.getNombreRolUsuario(), usuario.getNombreHotel());
+        q.setParameters(usuario.getNumDocumento(), usuario.getTipoDocumento(), usuario.getNombre(),usuario.getCorreo() ,usuario.getNombreRolUsuario(), usuario.getIdHotel());
         return (Long) q.executeUnique();            
 		}
 		catch(Exception e) {

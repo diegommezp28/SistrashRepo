@@ -1,5 +1,7 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.util.Date;
+
 public class Consumo implements VOConsumo{
 	
 	private Long id;
@@ -8,7 +10,9 @@ public class Consumo implements VOConsumo{
 	
 	private Long idReserva;
 	
-	private String nombreServicio;    
+	private Long idServicio;    
+	
+	private Date fecha;
 
 
 
@@ -17,16 +21,26 @@ public class Consumo implements VOConsumo{
 		id = 0L;
 		totalConsumo =0.0;
 		idReserva = 0L;
-		nombreServicio= "";
+		idServicio =0L;
+		fecha = new Date();
 		
 	}
 
-	public Consumo(Long id, Double totalConsumo, Long idReserva, String nombreServicio) {
-		super();
+	public Consumo(Long id, Double totalConsumo, Long idReserva, Long idServicio, Date fecha) {
 		this.id = id;
 		this.totalConsumo = totalConsumo;
 		this.idReserva = idReserva;
-		this.nombreServicio = nombreServicio;
+		this.idServicio = idServicio;
+		this.fecha = fecha;
+	}
+
+
+	public Long getIdServicio() {
+		return idServicio;
+	}
+
+	public void setIdServicio(Long idServicio) {
+		this.idServicio = idServicio;
 	}
 
 	public Long getId() {
@@ -52,19 +66,19 @@ public class Consumo implements VOConsumo{
 	public void setIdReserva(Long idReserva) {
 		this.idReserva = idReserva;
 	}
-
-	public String getNombreServicio() {
-		return nombreServicio;
+	
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setNombreServicio(String nombreServicio) {
-		this.nombreServicio = nombreServicio;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 	@Override
 	public String toString() {
-		return "Consumo [id=" + id + ", totalConsumo=" + totalConsumo + ", idReserva=" + idReserva + ", nombreServicio="
-				+ nombreServicio + "]";
+		return "Consumo [id=" + id + ", totalConsumo=" + totalConsumo + ", idReserva=" + idReserva + ", idServicio="
+				+ idServicio + ", fecha=" + fecha + "]";
 	}
 
 	

@@ -4,7 +4,7 @@ public interface VOHabitacion {
 	
 	public String getCodigo();
 	
-	public String getNombreHotel();
+	public Long getIdHotel();
 	
 	public String getNombreTipoHabitacion();
 }

@@ -31,7 +31,7 @@ public class SQLReserva {
         Query q = pm.newQuery(SQL, "INSERT INTO RESERVA" + " values (?, ?, ?, ?,?,?,?,?,?,?)");
         q.setParameters(reserva.getId().intValue(), new java.sql.Date(reserva.getFechaLlegada().getTime()),
         		new java.sql.Date(reserva.getFechaSalida().getTime()), reserva.getNumeroPersonas(), reserva.getPlanPago(),
-        		reserva.getTotalPago(), reserva.getCheckIn(), reserva.getCheckOut(), reserva.getDocumentoCliente(),
+        		reserva.getTotalPago(), reserva.getCheckIn(), reserva.getCheckOut(), reserva.getIdCliente(),
         		reserva.getCodigoHabitacion());
         System.out.println(q.toString());
          q.execute();      

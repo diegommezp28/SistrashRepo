@@ -7,5 +7,7 @@ public interface VOTipoHabitacion {
 	public String getDescripcion();
 	
 	public Double getCostoNoche();
+	
+	public Long getIdHotel();
 
 }

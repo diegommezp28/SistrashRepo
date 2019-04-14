@@ -6,6 +6,8 @@ package uniandes.isis2304.parranderos.negocio;
  * TODO Contructor vacío y atributos de tablas
  */
 public class Hotel implements VOHotel {
+	
+	private Long id;
 
 	private String nombre;
 	
@@ -15,15 +17,15 @@ public class Hotel implements VOHotel {
 	private Integer numeroHabitaciones;
 	
 	
-	public Hotel(String nombre, String ciudad, Integer numeroHabitaciones) {
-		super();
+	public Hotel(Long id, String nombre, String ciudad, Integer numeroHabitaciones) {
+		this.id = id;
 		this.nombre = nombre;
 		this.ciudad = ciudad;
 		this.numeroHabitaciones = numeroHabitaciones;
 	}
-	
 	public Hotel() {
 		super();
+		this.id = 0L;
 		this.nombre = " ";
 		this.ciudad = " ";
 		this.numeroHabitaciones = 0;
@@ -57,10 +59,18 @@ public class Hotel implements VOHotel {
 		// TODO Auto-generated method stub
 		return numeroHabitaciones;
 	}
+	
 
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
-		return "Hotel [nombre=" + nombre + ", ciudad=" + ciudad + ", numeroHabitaciones=" + numeroHabitaciones + "]";
+		return "Hotel [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", numeroHabitaciones="
+				+ numeroHabitaciones + "]";
 	}
 	
 	

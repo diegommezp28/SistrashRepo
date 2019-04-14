@@ -8,27 +8,24 @@ public class Descuento implements VODescuento{
 	
 	private String nombrePlan;
 	
-	private String nombreProducto;
-	
-	private String nombreServicio;
+	private Long idProducto;
 
 	public Descuento() {
 		super();
 		porcentaje = 0;
 		maximoProductos = 0;
 		nombrePlan = "";
-		nombreProducto = "";
-		nombreServicio = "";
+		idProducto = 0l;
 	}
 
-	public Descuento(Integer porcentaje, Integer maximoProductos, String nombrePlan, String nombreProducto, String nombreServicio) {
-		super();
+
+	public Descuento(Integer porcentaje, Integer maximoProductos, String nombrePlan, Long idProducto, Long idServicio) {
 		this.porcentaje = porcentaje;
 		this.maximoProductos = maximoProductos;
 		this.nombrePlan = nombrePlan;
-		this.nombreProducto = nombreProducto;
-		this.nombreServicio = nombreServicio;
+		this.idProducto = idProducto;
 	}
+
 
 	public Integer getPorcentaje() {
 		return porcentaje;
@@ -54,26 +51,20 @@ public class Descuento implements VODescuento{
 		this.nombrePlan = nombrePlan;
 	}
 
-	public String getNombreProducto() {
-		return nombreProducto;
+
+	public Long getIdProducto() {
+		return idProducto;
 	}
 
-	public void setNombreProducto(String nombreProducto) {
-		this.nombreProducto = nombreProducto;
-	}
 
-	public String getNombreServicio() {
-		return nombreServicio;
-	}
-
-	public void setNombreServicio(String nombreServicio) {
-		this.nombreServicio = nombreServicio;
+	public void setIdProducto(Long idProducto) {
+		this.idProducto = idProducto;
 	}
 
 	@Override
 	public String toString() {
 		return "Descuento [porcentaje=" + porcentaje + ", maximoProductos=" + maximoProductos + ", nombrePlan="
-				+ nombrePlan + ", nombreProducto=" + nombreProducto + ", nombreServicio=" + nombreServicio + "]";
+				+ nombrePlan + ", idProducto=" + idProducto + "]";
 	}
 
 

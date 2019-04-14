@@ -1,5 +1,7 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.util.Date;
+
 public interface VOConsumo {
 
 	
@@ -9,5 +11,7 @@ public interface VOConsumo {
 	
 	public Long getIdReserva();
 	
-	public String getNombreServicio();
+	public Long getIdServicio();
+	
+	public Date getFecha();
 }

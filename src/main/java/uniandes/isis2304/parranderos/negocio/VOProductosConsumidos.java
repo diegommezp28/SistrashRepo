@@ -2,9 +2,11 @@ package uniandes.isis2304.parranderos.negocio;
 
 public interface VOProductosConsumidos {
 
+	public Long getId();
+	
 	public Long getIdConsumo();
 	
-	public String getNombreProducto();
-	
-	public String getNombreServicio();
+	public Long getIdProducto();
+
+	public Integer getCantidad();
 }

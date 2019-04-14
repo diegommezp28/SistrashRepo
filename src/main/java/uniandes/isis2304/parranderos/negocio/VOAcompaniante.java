@@ -10,4 +10,6 @@ public interface VOAcompaniante {
 	
 	public Boolean getAcompaniante();
 	
+	public Long getIdReserva();
+	
 }

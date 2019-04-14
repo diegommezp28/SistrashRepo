@@ -2,29 +2,35 @@ package uniandes.isis2304.parranderos.negocio;
 
 public class Producto implements VOProducto{
 
+	private Long id;
+	
 	private String nombre;
-	
+
 	private Double costo;
-	
-	private String nombreServicio;
+
+	private Long idServicio;
 
 
 
 	public Producto() {
 		super();
 		nombre = "";
-		
+
 		costo = 0.0;
+
+		idServicio = 0L;
 		
-		nombreServicio = "";
+		id = 0l;
 	}
 
-	public Producto(String nombre, Double costo, String nombreServicio) {
-		super();
+
+	public Producto(Long id, String nombre, Double costo, Long idServicio) {
+		this.id = id;
 		this.nombre = nombre;
 		this.costo = costo;
-		this.nombreServicio = nombreServicio;
+		this.idServicio = idServicio;
 	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -42,17 +48,28 @@ public class Producto implements VOProducto{
 		this.costo = costo;
 	}
 
-	public String getNombreServicio() {
-		return nombreServicio;
+
+	public Long getIdServicio() {
+		return idServicio;
 	}
 
-	public void setNombreServicio(String nombreServicio) {
-		this.nombreServicio = nombreServicio;
+	public void setIdServicio(Long idServicio) {
+		this.idServicio = idServicio;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Producto [nombre=" + nombre + ", costo=" + costo + ", nombreServicio=" + nombreServicio + "]";
+		return "Producto [id=" + id + ", nombre=" + nombre + ", costo=" + costo + ", idServicio=" + idServicio + "]";
 	}
 
 

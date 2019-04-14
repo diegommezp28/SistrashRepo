@@ -7,15 +7,16 @@ public class TipoHabitacion implements VOTipoHabitacion{
 	private Double costoNoche;
 	
 	private String descripcion;
-
-
-	public TipoHabitacion(String nombre, Double costoNoche, String descripcion) {
-		super();
+	
+	private Long idHotel;
+	
+	public TipoHabitacion(String nombre, Double costoNoche, String descripcion, Long idHotel) {
 		this.nombre = nombre;
 		this.costoNoche = costoNoche;
 		this.descripcion = descripcion;
+		this.idHotel = idHotel;
 	}
-	
+
 	public TipoHabitacion() {
 		super();
 		this.nombre = " ";
@@ -45,10 +46,19 @@ public class TipoHabitacion implements VOTipoHabitacion{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	public Long getIdHotel() {
+		return idHotel;
+	}
+
+	public void setIdHotel(Long idHotel) {
+		this.idHotel = idHotel;
+	}
 
 	@Override
 	public String toString() {
-		return "TipoHabitacion [nombre=" + nombre + ", costoNoche=" + costoNoche + ", descripcion=" + descripcion + "]";
+		return "TipoHabitacion [nombre=" + nombre + ", costoNoche=" + costoNoche + ", descripcion=" + descripcion
+				+ ", idHotel=" + idHotel + "]";
 	}
 	
 }

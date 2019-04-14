@@ -2,6 +2,8 @@ package uniandes.isis2304.parranderos.negocio;
 
 public class Acompaniante implements VOAcompaniante {
 	
+	private Long idReserva;
+	
 	private Integer documento;
 	
 	private String tipoDocumento;
@@ -10,8 +12,8 @@ public class Acompaniante implements VOAcompaniante {
 	
 	private Boolean acompaniante;
 
-	public Acompaniante(Integer documento, String tipoDocumento, String nombre, Boolean acompaniante) {
-		super();
+	public Acompaniante(Long idReserva, Integer documento, String tipoDocumento, String nombre, Boolean acompaniante) {
+		this.idReserva = idReserva;
 		this.documento = documento;
 		this.tipoDocumento = tipoDocumento;
 		this.nombre = nombre;
@@ -20,6 +22,7 @@ public class Acompaniante implements VOAcompaniante {
 
 	public Acompaniante() {
 		super();
+		idReserva = 0L;
 		this.documento = 0;
 		this.tipoDocumento = " ";
 		this.nombre = " ";
@@ -58,10 +61,18 @@ public class Acompaniante implements VOAcompaniante {
 		this.acompaniante = acompaniante;
 	}
 
+	public Long getIdReserva() {
+		return idReserva;
+	}
+
+	public void setIdReserva(Long idReserva) {
+		this.idReserva = idReserva;
+	}
+
 	@Override
 	public String toString() {
-		return "Acompaniante [documento=" + documento + ", tipoDocumento=" + tipoDocumento + ", nombre=" + nombre
-				+ ", acompaniante=" + acompaniante + "]";
+		return "Acompaniante [idReserva=" + idReserva + ", documento=" + documento + ", tipoDocumento=" + tipoDocumento
+				+ ", nombre=" + nombre + ", acompaniante=" + acompaniante + "]";
 	}
 
 }

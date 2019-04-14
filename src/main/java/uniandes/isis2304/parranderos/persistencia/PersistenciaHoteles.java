@@ -40,15 +40,11 @@ public class PersistenciaHoteles {
 
 	private SQLAcompaniante sqlAcompaniante;
 
-	private SQLAcompanianteReserva sqlAcompanianteReserva;
-
 	private SQLConsumo sqlConsumo;
 
 	private SQLDescuento sqlDescuento;
 
 	private SQLHabitacion sqlHabitacion;
-
-	private SQLHabitacionHotel sqlHabitacionHotel;
 
 	private SQLPlanesDisponibles sqlPlanesDisponibles;
 
@@ -64,13 +60,9 @@ public class PersistenciaHoteles {
 
 	private SQLServicio sqlServicio;
 
-	private SQLServicioTipoServicio sqlServicioTipoServicio;
-
 	private SQLTieneUtensilio sqlTieneUtensilio;
 
 	private SQLTipoHabitacion sqlTipoHabitacion;
-
-	private SQLTipoHabitacionHotel sqlTipoHabitacionHotel;
 
 	private SQLTipoServicio sqlTipoServicio;
 
@@ -79,11 +71,12 @@ public class PersistenciaHoteles {
 	private SQLUtensilio sqlUtensilio;
 
 	private SQLHotel sqlHotel;
-	
-	/*
-	 * Equivalente a SQLUtil en Parranderos
-	 */
+
 	private SQLHoteles sqlHoteles;
+
+	private SQLFactura sqlFactura;
+	
+	private SQLDescuentoServicio sqlDescuentoServicio;
 
 	private PersistenciaHoteles() {
 		pmf = JDOHelper.getPersistenceManagerFactory("Hoteles");		
@@ -108,11 +101,9 @@ public class PersistenciaHoteles {
 		tablas.add ("HABITACION");
 		tablas.add ("USUARIO");
 		tablas.add ("ROL_USUARIO");
-		tablas.add ("HABITACION_HOTEL");
-		tablas.add ("ACOMPANIANTE_RESERVA");
 		tablas.add ("PRODUCTOS_CONSUMIDOS");
-		tablas.add ("SERVICIO_TIPO_SERVICIO");
-		tablas.add ("TIPO_HABITACION_HOTEL");
+		tablas.add("FACTURA");
+		tablas.add("DESCUENTO_SERVICIO");
 
 	}
 	
@@ -136,15 +127,11 @@ public class PersistenciaHoteles {
 	{
 		sqlAcompaniante = new SQLAcompaniante(this);
 
-		sqlAcompanianteReserva = new SQLAcompanianteReserva(this);
-
 		sqlConsumo = new SQLConsumo(this);
 
 		sqlDescuento = new SQLDescuento(this);
 
 		sqlHabitacion = new SQLHabitacion(this);
-
-		sqlHabitacionHotel = new SQLHabitacionHotel(this);
 
 		sqlPlanesDisponibles = new SQLPlanesDisponibles(this);
 
@@ -160,13 +147,9 @@ public class PersistenciaHoteles {
 
 		sqlServicio = new SQLServicio(this);
 
-		sqlServicioTipoServicio = new SQLServicioTipoServicio(this);
-
 		sqlTieneUtensilio = new SQLTieneUtensilio(this);
 
 		sqlTipoHabitacion = new SQLTipoHabitacion(this);
-
-		sqlTipoHabitacionHotel = new SQLTipoHabitacionHotel(this);
 
 		sqlTipoServicio = new SQLTipoServicio(this);
 
@@ -177,6 +160,10 @@ public class PersistenciaHoteles {
 		sqlHotel = new SQLHotel(this);
 		
 		sqlHoteles = new SQLHoteles(this);
+		
+		sqlFactura = new SQLFactura(this);
+		
+		sqlDescuentoServicio = new SQLDescuentoServicio(this);
 		
 		
 	}

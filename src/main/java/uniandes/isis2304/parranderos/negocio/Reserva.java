@@ -23,9 +23,11 @@ public class Reserva implements VOReserva {
 	
 	public Integer checkOut;
 	
-	public Integer documentoCliente;
+	public Long idCliente;
 	
 	public String codigoHabitacion;
+	
+	private Double valHabitacion;
 
 	public Reserva() {
 		super();
@@ -37,13 +39,14 @@ public class Reserva implements VOReserva {
 		this.totalPago = 0.0;
 		this.checkIn = 0;
 		this.checkOut = 0;
-		this.documentoCliente = 0;
+		this.idCliente = 0L;
 		this.codigoHabitacion = "";
+		this.valHabitacion = 0.0;
 	}
 
 	public Reserva(Long id, Date fechaLlegada, Date fechaSalida, Integer numeroPersonas, String planPago,
-			Double totalPago, Integer checkIn, Integer checkOut, Integer documentoCliente, String codigoHabitacion) {
-		super();
+			Double totalPago, Integer checkIn, Integer checkOut, Long idCliente, String codigoHabitacion,
+			Double valHabitacion) {
 		this.id = id;
 		this.fechaLlegada = fechaLlegada;
 		this.fechaSalida = fechaSalida;
@@ -52,8 +55,9 @@ public class Reserva implements VOReserva {
 		this.totalPago = totalPago;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
-		this.documentoCliente = documentoCliente;
+		this.idCliente = idCliente;
 		this.codigoHabitacion = codigoHabitacion;
+		this.valHabitacion = valHabitacion;
 	}
 
 	public void setTotalPago(Double totalPago) {
@@ -88,12 +92,12 @@ public class Reserva implements VOReserva {
 		this.planPago = planPago;
 	}
 
-	public Integer getDocumentoCliente() {
-		return documentoCliente;
+	public Long getIdCliente() {
+		return idCliente;
 	}
 
-	public void setDocumentoCliente(Integer documentoCliente) {
-		this.documentoCliente = documentoCliente;
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public String getCodigoHabitacion() {
@@ -136,12 +140,20 @@ public class Reserva implements VOReserva {
 		return checkOut;
 	}
 
+	public Double getValHabitacion() {
+		return valHabitacion;
+	}
+
+	public void setValHabitacion(Double valHabitacion) {
+		this.valHabitacion = valHabitacion;
+	}
+
 	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", fechaLlegada=" + fechaLlegada + ", fechaSalida=" + fechaSalida
 				+ ", numeroPersonas=" + numeroPersonas + ", planPago=" + planPago + ", totalPago=" + totalPago
-				+ ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", documentoCliente=" + documentoCliente
-				+ ", codigoHabitacion=" + codigoHabitacion + "]";
+				+ ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", idCliente=" + idCliente + ", codigoHabitacion="
+				+ codigoHabitacion + ", valHabitacion=" + valHabitacion + "]";
 	}
 
 }

@@ -2,24 +2,27 @@ package uniandes.isis2304.parranderos.negocio;
 
 public class ProductosConsumidos implements VOProductosConsumidos{
 	
+	public Long id;
+	
 	private Long idConsumo;
 	
-	private String nombreProducto;
+	private Long idProducto;
 	
-	private String nombreServicio;
+	private Integer cantidad;
+	
 
-	public ProductosConsumidos(Long idConsumo, String nombreProducto, String nombreServicio) {
-		super();
+	public ProductosConsumidos(Long id, Long idConsumo, Long idProducto, Integer cantidad) {
+		this.id = id;
 		this.idConsumo = idConsumo;
-		this.nombreProducto = nombreProducto;
-		this.nombreServicio = nombreServicio;
+		this.idProducto = idProducto;
+		this.cantidad = cantidad;
 	}
-
 	public ProductosConsumidos() {
 		super();
+		id =0l;
 		this.idConsumo = 0L;
-		this.nombreProducto = "";
-		this.nombreServicio = "";
+		this.idProducto =0l;
+		cantidad =0;
 	}
 	public Long getIdConsumo() {
 		return idConsumo;
@@ -29,26 +32,32 @@ public class ProductosConsumidos implements VOProductosConsumidos{
 		this.idConsumo = idConsumo;
 	}
 
-	public String getNombreProducto() {
-		return nombreProducto;
-	}
 
-	public void setNombreProducto(String nombreProducto) {
-		this.nombreProducto = nombreProducto;
+	public Long getIdProducto() {
+		return idProducto;
 	}
-
-	public String getNombreServicio() {
-		return nombreServicio;
+	public void setIdProducto(Long idProducto) {
+		this.idProducto = idProducto;
 	}
-
-	public void setNombreServicio(String nombreServicio) {
-		this.nombreServicio = nombreServicio;
+	
+	
+	
+	public Integer getCantidad() {
+		return cantidad;
 	}
-
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
-		return "ProductosConsumidos [idConsumo=" + idConsumo + ", nombreProducto=" + nombreProducto
-				+ ", nombreServicio=" + nombreServicio + "]";
+		return "ProductosConsumidos [id=" + id + ", idConsumo=" + idConsumo + ", idProducto=" + idProducto
+				+ ", cantidad=" + cantidad + "]";
 	}
 	
 	

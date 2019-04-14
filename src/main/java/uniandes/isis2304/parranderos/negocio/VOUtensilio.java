@@ -4,10 +4,8 @@ public interface VOUtensilio {
 	
 	public Long getId();
 	
-	public Boolean getBuenEstado();
-	
-	public Boolean getPrestado();
-	
 	public String getNombre();
+	
+	public Double getCostoReparacion();
 
 }

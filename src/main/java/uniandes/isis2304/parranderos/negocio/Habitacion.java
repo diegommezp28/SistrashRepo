@@ -4,21 +4,19 @@ public class Habitacion implements VOHabitacion{
 
 	private String codigo;
 	
-	private String nombreHotel;
+	private Long idHotel;
 	
 	private String nombreTipoHabitacion;
 
-	public Habitacion(String codigo, String nombreHotel, String nombreTipoHabitacion) {
-		super();
+	public Habitacion(String codigo, Long idHotel, String nombreTipoHabitacion) {
 		this.codigo = codigo;
-		this.nombreHotel = nombreHotel;
+		this.idHotel = idHotel;
 		this.nombreTipoHabitacion = nombreTipoHabitacion;
 	}
-
 	public Habitacion() {
 		super();
 		this.codigo = " ";
-		this.nombreHotel = " ";
+		this.idHotel = 0L;
 		this.nombreTipoHabitacion = " ";
 	}
 	public String getCodigo() {
@@ -28,15 +26,14 @@ public class Habitacion implements VOHabitacion{
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-
-	public String getNombreHotel() {
-		return nombreHotel;
+	
+	public Long getIdHotel() {
+		return idHotel;
 	}
-
-	public void setNombreHotel(String nombreHotel) {
-		this.nombreHotel = nombreHotel;
+	
+	public void setIdHotel(Long idHotel) {
+		this.idHotel = idHotel;
 	}
-
 	public String getNombreTipoHabitacion() {
 		return nombreTipoHabitacion;
 	}
@@ -47,7 +44,7 @@ public class Habitacion implements VOHabitacion{
 
 	@Override
 	public String toString() {
-		return "Habitacion [codigo=" + codigo + ", nombreHotel=" + nombreHotel + ", nombreTipoHabitacion="
+		return "Habitacion [codigo=" + codigo + ", idHotel=" + idHotel + ", nombreTipoHabitacion="
 				+ nombreTipoHabitacion + "]";
 	}
 	

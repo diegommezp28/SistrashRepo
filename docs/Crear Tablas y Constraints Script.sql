@@ -1,25 +1,24 @@
 
 CREATE TABLE PRODUCTO(
+id int NOT NULL,
 nombre varchar(255) NOT NULL ,
-nombre_Servicio varchar(255)NOT NULL,
+id_Servicio int NOT NULL,
 costo double precision,
-CONSTRAINT PRODUCTO_PK PRIMARY KEY(nombre, nombre_Servicio)
-);
+CONSTRAINT PRODUCTO_PK PRIMARY KEY(id)
+);f
 
 CREATE TABLE DESCUENTO(
 nombre_Plan varchar(255) NOT NULL,
-nombre_Producto varchar(255) NOT NULL,
-nombre_Servicio varchar(255) NOT NULL,
+id_Producto int NOT NULL,
 porcentaje int,
 maximo_Productos int,
-CONSTRAINT DESCUENTO_PK PRIMARY KEY(nombre_Plan, nombre_Producto, nombre_servicio)
+CONSTRAINT DESCUENTO_PK PRIMARY KEY(nombre_Plan, id_Producto)
 );
 
 CREATE TABLE UTENSILIO(
 id INT NOT NULL,
 nombre varchar(255),
-buen_Estado char(1),
-prestado char(1),
+costo_Reparacion float,
 CONSTRAINT UTENSILIO_PK PRIMARY KEY(id)
 );
 
@@ -27,16 +26,18 @@ CREATE TABLE CONSUMO(
 id int NOT NULL,
 total_Consumo float,
 id_Reserva int NOT NULL,
-nombre_Servicio varchar(255) NOT NULL,
+id_Servicio int NOT NULL,
+fecha date NOT NULL,
 CONSTRAINT CONSUMO_PK PRIMARY KEY(id)
 );
 
 CREATE TABLE TIENE_UTENSILIO(
+id NOT NULL,
 id_Reserva int NOT NULL,
 id_Utensilio int not null,
 buen_Estado char(1),
 costo float,
-CONSTRAINT TIENE_UTENSILIO_PK PRIMARY KEY(id_Reserva, id_Utensilio)
+CONSTRAINT TIENE_UTENSILIO_PK PRIMARY KEY(id)
 );
 
 CREATE TABLE RESERVA(
@@ -48,24 +49,30 @@ nombre_PlanPago varchar(255),
 total_Pago float,
 check_In int,
 check_Out int,
-documento_Cliente int,
+id_Cliente int,
+val_Habitacion float;
 codigo_Habitacion varchar(255),
 CONSTRAINT RESERVA_PK PRIMARY KEY(id)
 );
 
 CREATE TABLE SERVICIO (
+id int NOT NULL,
 nombre varchar(255) NOT NULL,
 descripcion varchar(255),
 capacidad int,
-CONSTRAINT SERVICIO_PK PRIMARY KEY(nombre)
+id_TipoServicio int;
+id_Hotel int,
+costo float,	
+CONSTRAINT SERVICIO_PK PRIMARY KEY(id)
 );
 
 CREATE TABLE RESERVA_DE_SERVICIO(
+id int NOT NULL,
 reserva date NOT NULL,
-nombre_Servicio varchar(255) NOT NULL,
+id_Servicio int NOT NULL,
 id_Reserva int NOT NULL,
 tiempo_Reserva int,
-CONSTRAINT RESERVA_DE_SERVICIO_PK PRIMARY KEY(reserva, nombre_Servicio, id_Reserva)
+CONSTRAINT RESERVA_DE_SERVICIO_PK PRIMARY KEY(id)
 );
 
 CREATE TABLE TIPO_SERVICIO(
@@ -80,7 +87,9 @@ nombre varchar(255) NOT NULL,
 descripcion varchar(255),
 dias_Totales int,
 costo_Total float,
-nombre_Hotel varchar(255),
+id_Hotel varchar(255),
+tipo_Plan varchar(255),
+fecha_Limite date,
 CONSTRAINT PLANES_DISPONIBLES_PK PRIMARY KEY(nombre)
 );
 
@@ -89,14 +98,16 @@ documento int NOT NULL,
 tipo_Documento varchar(255),
 nombre varchar(255),
 acompaniante char(1),
+id_Reserva int,
 CONSTRAINT ACOMPANIANTE_PK PRIMARY KEY(documento)
 );
 
 CREATE TABLE HOTEL(
+id int NOT NULL,
 nombre varchar(255) NOT NULL,
 ciudad varchar(255),
 numero_Habitaciones int,
-CONSTRAINT HOTEL_PK PRIMARY KEY(nombre)
+CONSTRAINT HOTEL_PK PRIMARY KEY(id)
 );
 
 CREATE TABLE TIPO_HABITACION(
@@ -108,19 +119,20 @@ CONSTRAINT TIPO_HABITACION_PK PRIMARY KEY(nombre)
 
 CREATE TABLE HABITACION(
 codigo varchar(255) NOT NULL,
-nombre_Hotel varchar(255),
+id_Hotel varchar(255),
 nombre_Tipo_Habitacion varchar(255),
 CONSTRAINT HABITACION_PK PRIMARY KEY(codigo )
 );
 
 CREATE TABLE USUARIO (
+id int NOT NULL
 documento int NOT NULL,
 tipo_Documento varchar(255),
 nombre varchar(255),
 correo varchar(255),
 nombre_Rol_Usuario varchar(255),
-nombre_Hotel varchar(255),
-CONSTRAINT USUARIO_PK PRIMARY KEY(documento)
+id_Hotel varchar(255),
+CONSTRAINT USUARIO_PK PRIMARY KEY(id)
 );
 
 CREATE TABLE ROL_USUARIO (
@@ -129,44 +141,36 @@ descripcion varchar(600),
 CONSTRAINT ROL_USUARIO_PK PRIMARY KEY(nombre)
 );
 
-CREATE TABLE HABITACION_HOTEL(
-nombre_Hotel varchar(255) NOT NULL,
-codigo_Habitacion varchar(255),
-CONSTRAINT HABITACION_HOTEL_PK PRIMARY KEY(nombre_Hotel, codigo_Habitacion)
-);
-
-CREATE TABLE ACOMPANIANTE_RESERVA (
-documento_Acompaniante int NOT NULL,
-id_Reserva int NOT NULL,
-CONSTRAINT ACOMPANIANTE_RESERVA_PK PRIMARY KEY(documento_Acompaniante, id_Reserva)
-);
-
 CREATE TABLE PRODUCTOS_CONSUMIDOS(
+id int NOT NULL,
 id_Consumo int NOT NULL,
-nombre_Producto varchar(255),
-nombre_Servicio varchar(255),
-CONSTRAINT PRODUCTOS_CONSUMIDOS_PK PRIMARY KEY(id_consumo)
+id_Producto int NOT NULL,
+cantidad int NOT NULL,
+CONSTRAINT PRODUCTOS_CONSUMIDOS_PK PRIMARY KEY(id)
 );
 
-CREATE TABLE SERVICIO_TIPO_SERVICIO(
-nombre_servicio varchar(255) not null,
-id_Tipo_servicio int NOT NULL,
-CONSTRAINT SERVICIO_TIPO_SERVICIO_PK PRIMARY KEY(nombre_servicio, id_Tipo_Servicio)
+CREATE TABLE DESCUENTO_SERVICIO(
+id_Servicio int NOT NULL,
+nombre_Plan varchar(255),
+porcentaje float,
+CONSTRAINT DESCUENTO_SERVICIO_PK PRIMARY KEY(id_Servicio, nombre_Plan)
 );
 
-CREATE TABLE TIPO_HABITACION_HOTEL(
-nombre_tipo varchar(255) NOT NULL,
-nombre_hotel varchar(255) NOT NULL,
-CONSTRAINT TIPO_HABITACION_HOTEL_PK PRIMARY KEY(nombre_tipo, nombre_hotel)
-);
+ALTER TABLE DESCUENTO_SERVICIO
+ADD CONSTRAINT FK_SERVICIO
+FOREIGN KEY(id_Servicio) REFERENCES SERVICIO(id);
+
+ALTER TABLE DESCUENTO_SERVICIO
+ADD CONSTRAINT FK_PLAN
+FOREIGN KEY(nombre_Plan) REFERENCES PLANES_DISPONIBLES(nombre);
 
 ALTER TABLE DESCUENTO
 ADD CONSTRAINT FK_producto 
-FOREIGN KEY (nombre_producto, nombre_servicio) REFERENCES PRODUCTO(nombre, nombre_servicio);
+FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id);
 
 ALTER TABLE PRODUCTO
-ADD CONSTRAINT FK_nombre_servicio
-FOREIGN KEY (nombre_servicio) REFERENCES SERVICIO(nombre);
+ADD CONSTRAINT FK_id_servicio
+FOREIGN KEY (id_servicio) REFERENCES SERVICIO(id);
 
 ALTER TABLE CONSUMO
 ADD CONSTRAINT FK_reserva
@@ -174,7 +178,7 @@ FOREIGN KEY (id_Reserva) REFERENCES RESERVA(id);
 
 ALTER TABLE CONSUMO
 ADD CONSTRAINT FK_Servicio
-FOREIGN KEY (nombre_Servicio) REFERENCES SERVICIO(nombre);
+FOREIGN KEY (id_Servicio) REFERENCES SERVICIO(id);
 
 ALTER TABLE TIENE_UTENSILIO 
 ADD CONSTRAINT FK_id_Reserva
@@ -185,28 +189,36 @@ ADD CONSTRAINT FK_Id_Utensilio
 FOREIGN KEY (id_Utensilio) REFERENCES UTENSILIO(id);
 
 ALTER TABLE RESERVA
-ADD CONSTRAINT FK_documento_Cliente
-FOREIGN KEY (documento_Cliente) REFERENCES USUARIO(documento);
+ADD CONSTRAINT FK_id_Cliente
+FOREIGN KEY (id_Cliente) REFERENCES USUARIO(id);
 
 ALTER TABLE RESERVA
 ADD CONSTRAINT FK_codigo_Habitacion
 FOREIGN KEY (codigo_Habitacion) REFERENCES HABITACION(codigo);
 
+ALTER TABLE RESERVA
+ADD CONSTRAINT FK_nombre_PlanPago
+FOREIGN KEY (nombre_PlanPago) REFERENCES PLANES_DISPONIBLES(nombre);
+
 ALTER TABLE RESERVA_DE_SERVICIO
-ADD CONSTRAINT FK_nombre_Servicio_RDS
-FOREIGN KEY (nombre_Servicio) REFERENCES SERVICIO(nombre);
+ADD CONSTRAINT FK_id_Servicio_RDS
+FOREIGN KEY (id_Servicio) REFERENCES SERVICIO(id);
 
 ALTER TABLE RESERVA_DE_SERVICIO
 ADD CONSTRAINT FK_id_Reserva_RDS
 FOREIGN KEY (id_Reserva) REFERENCES RESERVA(id);
 
+ALTER TABLE ACOMPANIANTE
+ADD CONSTRAINT FK_id_Reserva
+FOREIGN KEY (id_Reserva) REFERENCES RESERVA(id);
+
 ALTER TABLE PLANES_DISPONIBLES
-ADD CONSTRAINT FK_nombre_Hotel_PD
-FOREIGN KEY (nombre_Hotel) REFERENCES HOTEL(nombre);
+ADD CONSTRAINT FK_id_Hotel_PD
+FOREIGN KEY id_Hotel) REFERENCES HOTEL(id);
 
 ALTER TABLE HABITACION
-ADD CONSTRAINT FK_nombre_Hotel_H
-FOREIGN KEY (nombre_Hotel) REFERENCES HOTEL(nombre);
+ADD CONSTRAINT FK_id_Hotel_H
+FOREIGN KEY (id_Hotel) REFERENCES HOTEL(id);
 
 ALTER TABLE HABITACION
 ADD CONSTRAINT FK_nombre_Tipo_Habitacion_H
@@ -217,45 +229,22 @@ ADD CONSTRAINT FK_nombre_Rol_Usuario
 FOREIGN KEY (nombre_Rol_Usuario) REFERENCES ROL_USUARIO(nombre);
 
 ALTER TABLE USUARIO
-ADD CONSTRAINT FK_nombre_Hotel_Usuario
-FOREIGN KEY (nombre_Hotel) REFERENCES HOTEL(nombre);
-
-ALTER TABLE HABITACION_HOTEL
-ADD CONSTRAINT FK_nombre_Hotel_HH
-FOREIGN KEY (nombre_Hotel) REFERENCES HOTEL(nombre);
-
-ALTER TABLE HABITACION_HOTEL
-ADD CONSTRAINT FK_codigo_Habitacion_HH
-FOREIGN KEY (codigo_Habitacion) REFERENCES HABITACION(codigo);
-
-ALTER TABLE ACOMPANIANTE_RESERVA
-ADD CONSTRAINT FK_documento_Acompaniante
-FOREIGN KEY (documento_Acompaniante) REFERENCES ACOMPANIANTE(documento);
-
-ALTER TABLE ACOMPANIANTE_RESERVA
-ADD CONSTRAINT FK_id_Reserva_AR
-FOREIGN KEY (id_Reserva) REFERENCES RESERVA(id);
+ADD CONSTRAINT FK_id_Hotel_Usuario
+FOREIGN KEY (id_Hotel) REFERENCES HOTEL(id);
 
 ALTER TABLE PRODUCTOS_CONSUMIDOS
 ADD CONSTRAINT FK_id_Consumo_PC
 FOREIGN KEY (id_Consumo) REFERENCES CONSUMO(id);
 
 ALTER TABLE PRODUCTOS_CONSUMIDOS
-ADD CONSTRAINT FK_nombre_Producto_PC
-FOREIGN KEY (nombre_Producto, nombre_Servicio) REFERENCES PRODUCTO(nombre, nombre_Servicio);
+ADD CONSTRAINT FK_id_Producto_PC
+FOREIGN KEY (id_Producto) REFERENCES PRODUCTO(id);
 
-ALTER TABLE SERVICIO_TIPO_SERVICIO
-ADD CONSTRAINT FK_nombre_Servicio_STS
-FOREIGN KEY (nombre_Servicio) REFERENCES SERVICIO(nombre);
+ALTER TABLE SERVICIO
+ADD CONSTRAINT FK_id_TIPO_SERVICIO
+FOREIGN KEY (id_TipoServicio) REFERENCES TIPO_SERVICIO(id);
 
-ALTER TABLE SERVICIO_TIPO_SERVICIO
-ADD CONSTRAINT FK_id_Tipo_Servicio_STS
-FOREIGN KEY (id_Tipo_Servicio) REFERENCES TIPO_SERVICIO(id);
+ALTER TABLE SERVICIO
+ADD CONSTRAINT FK_id_Hotel_SERVICIO
+FOREIGN KEY (id_Hotel) REFERENCES HOTEL(id);
 
-ALTER TABLE TIPO_HABITACION_HOTEL
-ADD CONSTRAINT FK_nombre_Tipo_THH
-FOREIGN KEY (nombre_Tipo) REFERENCES TIPO_HABITACION(nombre);
-
-ALTER TABLE TIPO_HABITACION_HOTEL
-ADD CONSTRAINT FK_nombre_Hotel_THH
-FOREIGN KEY (nombre_Hotel) REFERENCES HOTEL(nombre);

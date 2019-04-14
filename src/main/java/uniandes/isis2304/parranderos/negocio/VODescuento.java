@@ -6,9 +6,7 @@ public interface VODescuento {
 	
 	public Integer getMaximoProductos();
 	
-	public String getNombreServicio();
-	
 	public String getNombrePlan();
 	
-	public String getNombreProducto();
+	public Long getIdProducto();
 }

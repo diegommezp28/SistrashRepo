@@ -9,5 +9,11 @@ public interface VOServicio {
 	
 	public String getDescripcion();
 	
+	public Long getIdHotel();
+	
+	public Double getCosto();
+	
+	public Long getId();
+	
 	
 }

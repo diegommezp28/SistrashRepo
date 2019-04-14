@@ -21,7 +21,9 @@ public interface VOReserva {
 	
 	public Integer getCheckOut();
 	
-	public Integer getDocumentoCliente();
+	public Long getIdCliente();
 	
 	public String getCodigoHabitacion();
+	
+	public Double getValHabitacion();
 }

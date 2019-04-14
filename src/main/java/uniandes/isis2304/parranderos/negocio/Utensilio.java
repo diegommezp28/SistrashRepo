@@ -6,28 +6,22 @@ public class Utensilio implements VOUtensilio{
 	
 	private String nombre;
 	
-	private Boolean buenEstado;
-	
-	private Boolean prestado;
-
+	public Double costoReparacion;
 
 
 	public Utensilio() {
 		super();
 		id = 0L;
 		nombre = "";
-		buenEstado = true;
-		prestado = false;
-		
+		costoReparacion = 0.0;
 	}
 
-	public Utensilio(Long id, String nombre, Boolean buenEstado, Boolean prestado) {
-		super();
+	public Utensilio(Long id, String nombre, Double costoReparacion) {
 		this.id = id;
 		this.nombre = nombre;
-		this.buenEstado = buenEstado;
-		this.prestado = prestado;
+		this.costoReparacion = costoReparacion;
 	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -35,22 +29,6 @@ public class Utensilio implements VOUtensilio{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Boolean getBuenEstado() {
-		return buenEstado;
-	}
-
-	public void setBuenEstado(Boolean buenEstado) {
-		this.buenEstado = buenEstado;
-	}
-
-	public Boolean getPrestado() {
-		return prestado;
-	}
-
-	public void setPrestado(Boolean prestado) {
-		this.prestado = prestado;
 	}
 	
 
@@ -62,11 +40,17 @@ public class Utensilio implements VOUtensilio{
 		this.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return "Utensilio [id=" + id + ", nombre=" + nombre + ", buenEstado=" + buenEstado + ", prestado=" + prestado
-				+ "]";
+	public Double getCostoReparacion() {
+		return costoReparacion;
 	}
 
+	public void setCostoReparacion(Double costoReparacion) {
+		this.costoReparacion = costoReparacion;
+	}
+
+	@Override
+	public String toString() {
+		return "Utensilio [id=" + id + ", nombre=" + nombre + ", costoReparacion=" + costoReparacion + "]";
+	}
 
 }

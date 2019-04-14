@@ -6,6 +6,8 @@ package uniandes.isis2304.parranderos.negocio;
  */
 public class Usuario implements VOUsuario {
 	
+	
+	private Long id;
 
 	private String tipoDocumento;
 	
@@ -17,17 +19,22 @@ public class Usuario implements VOUsuario {
 	
 	public String nombreRolUsuario;
 	
-	public String nombreHotel;
+	public Long idHotel;
 	
-	public Usuario(String tipoDocumento, Integer numDocumento, String nombre, String correo, String nombreRolUsuario,
-			String nombreHotel) {
-		super();
+	public Long idTipoServicio;
+	
+
+
+	public Usuario(Long id, String tipoDocumento, Integer numDocumento, String nombre, String correo,
+			String nombreRolUsuario, Long idHotel, Long idTipoServicio) {
+		this.id = id;
 		this.tipoDocumento = tipoDocumento;
 		this.numDocumento = numDocumento;
 		this.nombre = nombre;
 		this.correo = correo;
 		this.nombreRolUsuario = nombreRolUsuario;
-		this.nombreHotel = nombreHotel;
+		this.idHotel = idHotel;
+		this.idTipoServicio = idTipoServicio;
 	}
 
 	public Usuario() {
@@ -37,7 +44,8 @@ public class Usuario implements VOUsuario {
 		this.nombre = " ";
 		this.correo = " ";
 		this.nombreRolUsuario = "";
-		this.nombreHotel = " ";
+		this.idHotel = 0L;
+		this.idTipoServicio = 0L;
 	}
 	
 	public void setTipoDocumento(String tipoDocumento) {
@@ -64,12 +72,12 @@ public class Usuario implements VOUsuario {
 		this.nombreRolUsuario = nombreRolUsuario;
 	}
 
-	public String getNombreHotel() {
-		return nombreHotel;
+	public Long getIdHotel() {
+		return idHotel;
 	}
 
-	public void setNombreHotel(String nombreHotel) {
-		this.nombreHotel = nombreHotel;
+	public void setIdHotel(Long idHotel) {
+		this.idHotel = idHotel;
 	}
 
 	public String getTipoDocumento() {
@@ -88,11 +96,27 @@ public class Usuario implements VOUsuario {
 		return correo;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getIdTipoServicio() {
+		return idTipoServicio;
+	}
+
+	public void setIdTipoServicio(Long idTipoServicio) {
+		this.idTipoServicio = idTipoServicio;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuario [tipoDocumento=" + tipoDocumento + ", numDocumento=" + numDocumento + ", nombre=" + nombre
-				+ ", correo=" + correo + ", nombreRolUsuario=" + nombreRolUsuario + ", nombreHotel=" + nombreHotel
-				+ "]";
+		return "Usuario [id=" + id + ", tipoDocumento=" + tipoDocumento + ", numDocumento=" + numDocumento + ", nombre="
+				+ nombre + ", correo=" + correo + ", nombreRolUsuario=" + nombreRolUsuario + ", idHotel=" + idHotel
+				+ ", idTipoServicio=" + idTipoServicio + "]";
 	}
 
 }
